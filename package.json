@@ -1,6 +1,6 @@
 {
     "name": "select-row-col",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "description": "A react component for selecting table size",
     "author": "刘衍晴",
     "main": "./dist/index.js",
