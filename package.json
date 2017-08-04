@@ -1,9 +1,9 @@
 {
     "name": "select-row-col",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "A new React project",
     "author": "刘衍晴",
-    "main": "./dist/select-row-col.js",
+    "main": "./dist/index.js",
     "scripts": {
         "i": "SASS_BINARY_SITE=https://npm.taobao.org/mirrors/node-sass/ yarn install --registry=https://registry.npm.taobao.org",
         "dev": "./node_modules/.bin/webpack-dev-server ",
@@ -66,6 +66,11 @@
             "json"
         ]
     },
+    "files": [
+        "dist",
+        "src",
+        "README.md"
+    ],
     "engines": {
         "node": ">= 5.0.0",
         "npm": ">= 3.0.0"
