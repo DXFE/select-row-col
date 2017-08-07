@@ -96,17 +96,21 @@ export default class extends Component{
         });
     };
 
-    windowMouseDown = () => {
+    windowMouseDown = (e) => {
         this.closeTable();
-        this.props.onCancel();
+        if(e.target !== this.refs.tableSelect) {
+            this.props.onCancel();
+        }
     };
 
     tableContainerMouseDown = (e) => {
-        e.stopPropagation();
-        e.nativeEvent.stopImmediatePropagation();
+        if(e.target !== this.refs.tableSelect) {
+            e.stopPropagation();
+            e.nativeEvent.stopImmediatePropagation();
+        }
     };
 
-    tableClick = () => {
+    tableSelect = () => {
         this.closeTable();
         this.props.onSelect(this.state.selectedTableSize);
     };
@@ -130,8 +134,8 @@ export default class extends Component{
 
         return (
             <div className="select-row-col-container" onMouseDown={this.tableContainerMouseDown}>
-                <div className="table-bg" ref='table' style={tableStyle} onClick={this.tableClick}>
-                    <div className="table-selected" style={selectedTableStyle}></div>
+                <div className="table-bg" ref='table' style={tableStyle} onMouseDown={this.tableSelect}>
+                    <div ref="tableSelect" className="table-selected" style={selectedTableStyle}></div>
                 </div>
                 <div className="footer">{`${selectedTableSize.col} x ${selectedTableSize.row}`}</div>
             </div>

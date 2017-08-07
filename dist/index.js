@@ -37,8 +37,8 @@ var _default = (_temp = _class = function (_Component) {
             return _this.__tableContainerMouseDown__REACT_HOT_LOADER__.apply(_this, arguments);
         };
 
-        _this.tableClick = function () {
-            return _this.__tableClick__REACT_HOT_LOADER__.apply(_this, arguments);
+        _this.tableSelect = function () {
+            return _this.__tableSelect__REACT_HOT_LOADER__.apply(_this, arguments);
         };
 
         _this.state = {
@@ -126,19 +126,23 @@ var _default = (_temp = _class = function (_Component) {
         }
     }, {
         key: '__windowMouseDown__REACT_HOT_LOADER__',
-        value: function __windowMouseDown__REACT_HOT_LOADER__() {
+        value: function __windowMouseDown__REACT_HOT_LOADER__(e) {
             this.closeTable();
-            this.props.onCancel();
+            if (e.target !== this.refs.tableSelect) {
+                this.props.onCancel();
+            }
         }
     }, {
         key: '__tableContainerMouseDown__REACT_HOT_LOADER__',
         value: function __tableContainerMouseDown__REACT_HOT_LOADER__(e) {
-            e.stopPropagation();
-            e.nativeEvent.stopImmediatePropagation();
+            if (e.target !== this.refs.tableSelect) {
+                e.stopPropagation();
+                e.nativeEvent.stopImmediatePropagation();
+            }
         }
     }, {
-        key: '__tableClick__REACT_HOT_LOADER__',
-        value: function __tableClick__REACT_HOT_LOADER__() {
+        key: '__tableSelect__REACT_HOT_LOADER__',
+        value: function __tableSelect__REACT_HOT_LOADER__() {
             this.closeTable();
             this.props.onSelect(this.state.selectedTableSize);
         }
@@ -169,8 +173,8 @@ var _default = (_temp = _class = function (_Component) {
                 { className: 'select-row-col-container', onMouseDown: this.tableContainerMouseDown },
                 React.createElement(
                     'div',
-                    { className: 'table-bg', ref: 'table', style: tableStyle, onClick: this.tableClick },
-                    React.createElement('div', { className: 'table-selected', style: selectedTableStyle })
+                    { className: 'table-bg', ref: 'table', style: tableStyle, onMouseDown: this.tableSelect },
+                    React.createElement('div', { ref: 'tableSelect', className: 'table-selected', style: selectedTableStyle })
                 ),
                 React.createElement(
                     'div',
