@@ -16,8 +16,7 @@ module.exports = {
         ]
     },
     output: {
-        filename: '[name].js',
-        sourceMapFilename: '[file].map',
+        filename: 'index.js',
         path: resolve(__dirname, 'dist'),
         publicPath: '/dist',
         library: 'select-row-col',
